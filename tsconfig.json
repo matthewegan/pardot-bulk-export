@@ -10,5 +10,5 @@
   },
   "extends": "@tsconfig/node14/tsconfig.json",
   "include": ["src/**/*"],
-  "types": ["express", "node"]
+  "types": ["express", "node", "sequelize"]
 }

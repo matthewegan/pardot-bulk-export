@@ -16,7 +16,7 @@ module.exports = {
       jsx: false
     },
     ecmaVersion: 12,
-    project: require('path').resolve(__dirname, 'tsconfig.json'),
+    project: path.resolve(__dirname, 'tsconfig.json'),
     sourceType: 'module'
   },
   plugins: ['@typescript-eslint'],

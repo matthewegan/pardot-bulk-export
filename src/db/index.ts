@@ -1,5 +1,6 @@
 import { Sequelize } from 'sequelize-typescript'
-import Prospect from '@/db/models/Prospect'
+
+import { List, ListMembership, Opportunity, Prospect } from '@/db/models'
 
 export default new Sequelize(
   process.env.DB_NAME as string,
@@ -8,8 +9,8 @@ export default new Sequelize(
   {
     dialect: 'mysql',
     host: process.env.DB_HOST,
-    models: [Prospect],
+    models: [List, ListMembership, Opportunity, Prospect],
     port: +(process.env.DB_PORT as string),
-    sync: { force: true },
+    sync: { force: false },
   }
 )
