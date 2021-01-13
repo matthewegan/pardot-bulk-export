@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "paths": { "@/*": ["*"] },
+    "strictPropertyInitialization": true
+  },
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "include": ["src/**/*"],
+  "types": ["express", "node"]
+}
