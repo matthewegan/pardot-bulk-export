@@ -6,6 +6,7 @@ import {
   ListMembership,
   Opportunity,
   Prospect,
+  VisitorActivity,
 } from '@/db/models'
 
 export default new Sequelize(
@@ -15,7 +16,14 @@ export default new Sequelize(
   {
     dialect: 'mysql',
     host: process.env.DB_HOST,
-    models: [EmailClick, List, ListMembership, Opportunity, Prospect],
+    models: [
+      EmailClick,
+      List,
+      ListMembership,
+      Opportunity,
+      Prospect,
+      VisitorActivity,
+    ],
     port: +(process.env.DB_PORT as string),
     sync: { force: true },
   }

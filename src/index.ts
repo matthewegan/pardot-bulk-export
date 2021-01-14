@@ -10,6 +10,7 @@ import {
   listMembership,
   opportunity,
   prospect,
+  visitorActivity,
 } from '@/routes'
 
 const app = express()
@@ -27,6 +28,7 @@ app.use('/list', list)
 app.use('/listMembership', listMembership)
 app.use('/opportunity', opportunity)
 app.use('/prospect', prospect)
+app.use('/visitorActivity', visitorActivity)
 
 app.get('/', (_, res) => res.send('Pardot Bulk Export'))
 

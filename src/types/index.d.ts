@@ -4,6 +4,7 @@ import {
   ListMembership,
   Opportunity,
   Prospect,
+  VisitorActivity,
 } from '@/db/models'
 
 export type PardotObject =
@@ -12,6 +13,7 @@ export type PardotObject =
   | 'listMembership'
   | 'opportunity'
   | 'prospect'
+  | 'visitorActivity'
 
 export type PardotObjectResponse = {
   [DataObject in PardotObject]: PardotObjectModel[]
@@ -23,6 +25,7 @@ export type PardotObjectModel =
   | ListMembership
   | Opportunity
   | Prospect
+  | VisitorActivity
 
 export interface RequestQueryParams {
   format: 'json'

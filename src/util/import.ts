@@ -1,3 +1,5 @@
+import { snakeCase } from 'lodash'
+
 import { getObjectData } from '@/util/request'
 import { PardotObject, PardotObjectModel, RequestQueryParams } from '@/types'
 
@@ -31,7 +33,8 @@ export async function importObjectData({
     throw new Error(err)
   }
 
-  let objectData = result?.[pardotObject] || []
+  let objectData =
+    result?.[pardotObject] || result?.[snakeCase(pardotObject)] || []
 
   if (objectData && Array.isArray(objectData) && objectData.length) {
     if (lastRecordedIds.length) {
