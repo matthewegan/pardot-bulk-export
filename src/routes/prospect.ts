@@ -16,7 +16,6 @@ export default express
 
       await importObjectData({
         createdAfter: createdAfter as string,
-        pardotObject: 'prospect',
         insertAction: async (objectData) => {
           await Prospect.bulkCreate(
             objectData.map((prospect) => {
@@ -25,6 +24,7 @@ export default express
             })
           )
         },
+        pardotObject: 'prospect',
       })
 
       return res.status(200).json({

@@ -1,6 +1,13 @@
-import { List, ListMembership, Opportunity, Prospect } from '@/db/models'
+import {
+  EmailClick,
+  List,
+  ListMembership,
+  Opportunity,
+  Prospect,
+} from '@/db/models'
 
 export type PardotObject =
+  | 'emailClick'
   | 'list'
   | 'listMembership'
   | 'opportunity'
@@ -10,4 +17,16 @@ export type PardotObjectResponse = {
   [DataObject in PardotObject]: PardotObjectModel[]
 }
 
-export type PardotObjectModel = List | ListMembership | Opportunity | Prospect
+export type PardotObjectModel =
+  | EmailClick
+  | List
+  | ListMembership
+  | Opportunity
+  | Prospect
+
+export interface RequestQueryParams {
+  format: 'json'
+  output: 'bulk'
+  sort_by: string
+  sort_order: 'ascending'
+}

@@ -16,10 +16,10 @@ export default express
 
       await importObjectData({
         createdAfter: createdAfter as string,
-        pardotObject: 'listMembership',
         insertAction: async (objectData) => {
           await ListMembership.bulkCreate(objectData)
         },
+        pardotObject: 'listMembership',
       })
 
       return res

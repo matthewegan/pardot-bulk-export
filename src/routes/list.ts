@@ -16,10 +16,10 @@ export default express
 
       await importObjectData({
         createdAfter: createdAfter as string,
-        pardotObject: 'list',
         insertAction: async (objectData) => {
           await List.bulkCreate(objectData)
         },
+        pardotObject: 'list',
       })
 
       return res.status(200).json({ message: 'Lists imported', success: true })

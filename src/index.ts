@@ -4,7 +4,13 @@ import express, { json, urlencoded } from 'express'
 import helmet from 'helmet'
 
 import { authenticate } from '@/util/db'
-import { list, listMembership, opportunity, prospect } from '@/routes'
+import {
+  emailClick,
+  list,
+  listMembership,
+  opportunity,
+  prospect,
+} from '@/routes'
 
 const app = express()
 
@@ -16,6 +22,7 @@ app.use(helmet())
 app.use(json())
 app.use(urlencoded({ extended: false }))
 
+app.use('/emailClick', emailClick)
 app.use('/list', list)
 app.use('/listMembership', listMembership)
 app.use('/opportunity', opportunity)
