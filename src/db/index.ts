@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize-typescript'
 
 import {
+  Email,
   EmailClick,
   List,
   ListMembership,
@@ -17,6 +18,7 @@ export default new Sequelize(
     dialect: 'mysql',
     host: process.env.DB_HOST,
     models: [
+      Email,
       EmailClick,
       List,
       ListMembership,

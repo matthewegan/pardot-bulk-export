@@ -1,4 +1,5 @@
 import {
+  Email,
   EmailClick,
   List,
   ListMembership,
@@ -8,6 +9,7 @@ import {
 } from '@/db/models'
 
 export type PardotObject =
+  | 'email'
   | 'emailClick'
   | 'list'
   | 'listMembership'
@@ -20,6 +22,7 @@ export type PardotObjectResponse = {
 }
 
 export type PardotObjectModel =
+  | Email
   | EmailClick
   | List
   | ListMembership
