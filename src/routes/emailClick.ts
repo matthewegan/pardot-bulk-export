@@ -17,17 +17,7 @@ export default express
       await importObjectData({
         createdAfter: createdAfter as string,
         insertAction: async (objectData) => {
-          await EmailClick.bulkCreate(
-            objectData.map((objectModel) => {
-              const emailClick = objectModel as EmailClick
-              const { email_template_id, list_email_id } = emailClick
-
-              emailClick.email_template_id = email_template_id || null
-              emailClick.list_email_id = list_email_id || null
-
-              return emailClick
-            })
-          )
+          await EmailClick.bulkCreate(objectData)
         },
         pardotObject: 'emailClick',
         queryParams: { sort_by: '' },
