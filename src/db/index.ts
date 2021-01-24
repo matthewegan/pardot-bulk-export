@@ -10,6 +10,7 @@ import {
   Prospect,
   VisitorActivity,
 } from '@/db/models'
+import { toBoolean } from '@/util'
 
 export default new Sequelize(
   process.env.DB_NAME as string,
@@ -29,6 +30,6 @@ export default new Sequelize(
       VisitorActivity,
     ],
     port: +(process.env.DB_PORT as string),
-    sync: { force: true },
+    sync: { force: toBoolean(process.env.DB_FORCE_SYNC) },
   }
 )
