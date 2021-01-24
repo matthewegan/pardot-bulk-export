@@ -1,6 +1,7 @@
 import {
   Email,
   EmailClick,
+  EmailTemplate,
   List,
   ListMembership,
   Opportunity,
@@ -11,6 +12,7 @@ import {
 export type PardotObject =
   | 'email'
   | 'emailClick'
+  | 'emailTemplate'
   | 'list'
   | 'listMembership'
   | 'opportunity'
@@ -24,6 +26,7 @@ export type PardotObjectResponse = {
 export type PardotObjectModel =
   | Email
   | EmailClick
+  | EmailTemplate
   | List
   | ListMembership
   | Opportunity

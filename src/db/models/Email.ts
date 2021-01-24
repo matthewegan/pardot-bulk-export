@@ -35,9 +35,11 @@ export default class Email extends Model {
 
   @AllowNull
   @Column(DataType.TEXT)
-  html!: string
+  messageHtml!: string
 
   @AllowNull
   @Column(DataType.DATE)
   created_at!: Date
+
+  message?: { html: string; text: string }
 }

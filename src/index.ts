@@ -5,6 +5,7 @@ import helmet from 'helmet'
 
 import { authenticate } from '@/util/db'
 import {
+  email,
   emailClick,
   list,
   listMembership,
@@ -23,6 +24,7 @@ app.use(helmet())
 app.use(json())
 app.use(urlencoded({ extended: false }))
 
+app.use('/email', email)
 app.use('/emailClick', emailClick)
 app.use('/list', list)
 app.use('/listMembership', listMembership)

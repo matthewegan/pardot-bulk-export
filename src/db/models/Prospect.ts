@@ -18,6 +18,10 @@ export default class Prospect extends Model {
   campaign_id!: number
 
   @AllowNull
+  @Column(DataType.STRING)
+  campaign_name!: string | null
+
+  @AllowNull
   @Column(DataType.INTEGER)
   user_id!: number
 
@@ -153,9 +157,9 @@ export default class Prospect extends Model {
   @Column(DataType.DATE)
   updated_at!: Date
 
-  campaign?: { id: number; name: string }
-
   @AllowNull
   @Column(DataType.INTEGER)
   prospect_account_id!: number
+
+  campaign?: { id: number; name: string }
 }

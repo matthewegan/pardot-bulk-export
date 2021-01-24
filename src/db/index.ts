@@ -3,6 +3,7 @@ import { Sequelize } from 'sequelize-typescript'
 import {
   Email,
   EmailClick,
+  EmailTemplate,
   List,
   ListMembership,
   Opportunity,
@@ -20,6 +21,7 @@ export default new Sequelize(
     models: [
       Email,
       EmailClick,
+      EmailTemplate,
       List,
       ListMembership,
       Opportunity,

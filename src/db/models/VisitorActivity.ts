@@ -2,17 +2,21 @@ import {
   AllowNull,
   Column,
   DataType,
-  Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript'
 
+import { AppModel } from '@/db/models'
+import { PardotObject } from '@/types'
+
+const modelName: PardotObject = 'visitorActivity'
+
 @Table({
-  modelName: 'visitorActivity',
+  modelName,
   tableName: 'visitor_activities',
   timestamps: false,
 })
-export default class VisitorActivity extends Model {
+export default class VisitorActivity extends AppModel {
   @PrimaryKey
   @Column(DataType.INTEGER)
   id!: number
@@ -83,9 +87,7 @@ export default class VisitorActivity extends Model {
 
   @AllowNull
   @Column(DataType.DATE)
-  created_at!: Date
-
-  @AllowNull
-  @Column(DataType.DATE)
   updated_at!: Date
+
+  protected static modelName = modelName
 }

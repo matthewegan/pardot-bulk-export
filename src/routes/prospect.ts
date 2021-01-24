@@ -16,10 +16,11 @@ export default express
 
       await importObjectData({
         createdAfter: createdAfter as string,
-        insertAction: async (objectData) => {
+        insert: async (objectData) => {
           await Prospect.bulkCreate(
-            objectData.map((prospect) => {
-              delete (prospect as Prospect).campaign
+            objectData.map((objectModel) => {
+              const prospect = objectModel as Prospect
+              prospect.campaign_name = prospect.campaign?.name || null
               return prospect
             })
           )

@@ -1,7 +1,6 @@
 import express from 'express'
 
 import { createdAfterMiddleware } from '@/middleware'
-import { importObjectData } from '@/util/import'
 import { VisitorActivity } from '@/db/models'
 
 export default express
@@ -14,19 +13,13 @@ export default express
         await VisitorActivity.truncate()
       }
 
-      await importObjectData({
-        createdAfter: createdAfter as string,
-        insertAction: async (objectData) => {
-          await VisitorActivity.bulkCreate(objectData)
-        },
-        pardotObject: 'visitorActivity',
-      })
+      await VisitorActivity.import(createdAfter as string)
 
       return res
         .status(200)
         .json({ message: 'Visitor activities imported', success: true })
     } catch (e) {
-      console.error({ e })
+      console.error(e)
       return res.status(500).json({ message: e.message, success: false })
     }
   })

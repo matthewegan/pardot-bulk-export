@@ -16,14 +16,14 @@ export default express
 
       await importObjectData({
         createdAfter: createdAfter as string,
-        insertAction: async (objectData) => {
+        insert: async (objectData) => {
           await Opportunity.bulkCreate(
             objectData.map((objectModel) => {
               const opportunity = objectModel as Opportunity
               opportunity.campaign_id = opportunity.campaign?.id || 0
               opportunity.campaign_name = opportunity.campaign?.name || null
               opportunity.prospect_id = opportunity.prospects?.prospect.id || 0
-              return objectModel
+              return opportunity
             })
           )
         },

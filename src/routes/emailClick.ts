@@ -16,7 +16,7 @@ export default express
 
       await importObjectData({
         createdAfter: createdAfter as string,
-        insertAction: async (objectData) => {
+        insert: async (objectData) => {
           await EmailClick.bulkCreate(objectData)
         },
         pardotObject: 'emailClick',
@@ -27,7 +27,7 @@ export default express
         .status(200)
         .json({ message: 'Email clicks imported', success: true })
     } catch (e) {
-      console.error({ e })
+      console.error(e)
       return res.status(500).json({ message: e.message, success: false })
     }
   })

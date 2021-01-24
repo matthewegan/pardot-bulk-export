@@ -16,7 +16,7 @@ export default express
 
       await importObjectData({
         createdAfter: createdAfter as string,
-        insertAction: async (objectData) => {
+        insert: async (objectData) => {
           await List.bulkCreate(objectData)
         },
         pardotObject: 'list',
