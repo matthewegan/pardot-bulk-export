@@ -15,7 +15,7 @@ export const baseParams: RequestQueryParams = {
 export async function getObjectData(
   pardotObject: PardotObject,
   createdAfter: string,
-  queryParams: Partial<RequestQueryParams> = {},
+  queryParams: Partial<RequestQueryParams>,
   apiKey: string | undefined
 ): Promise<{ err?: string; result?: PardotObjectResponse }> {
   const { data } = await axios.get(`/${pardotObject}/version/4/do/query`, {

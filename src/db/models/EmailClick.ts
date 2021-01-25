@@ -2,38 +2,36 @@ import {
   AllowNull,
   Column,
   DataType,
-  Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript'
 
-@Table({
-  modelName: 'emailClick',
-  tableName: 'email_clicks',
-  timestamps: false,
-})
-export default class EmailClick extends Model {
+import { AppModel } from '@/db/models'
+import { PardotObject } from '@/types'
+
+const modelName: PardotObject = 'emailClick'
+
+@Table({ modelName, tableName: 'email_clicks', timestamps: false })
+export default class EmailClick extends AppModel {
   @PrimaryKey
   @Column(DataType.INTEGER)
-  id!: number
+  public id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  prospect_id!: number
+  public prospect_id!: number
 
   @AllowNull
   @Column(DataType.STRING(765))
-  url!: string
+  public url!: string
 
   @AllowNull
   @Column(DataType.INTEGER)
-  list_email_id?: number | null
+  public list_email_id?: number | null
 
   @AllowNull
   @Column(DataType.INTEGER)
-  email_template_id?: number | null
+  public email_template_id?: number | null
 
-  @AllowNull
-  @Column(DataType.DATE)
-  created_at!: Date
+  protected static modelName = modelName
 }

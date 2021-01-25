@@ -3,7 +3,7 @@ import { literal } from 'sequelize'
 
 import { importObjectData } from '@/util/import'
 import { login } from '@/util/request'
-import { PardotObject } from '@/types'
+import { PardotObject, PardotObjectModel, RequestQueryParams } from '@/types'
 
 export default class AppModel extends Model {
   @AllowNull
@@ -18,7 +18,7 @@ export default class AppModel extends Model {
         await this.findOne({
           attributes: [
             [
-              literal("convert_tz(`created_at`, '+00:00', '-04:00')"),
+              literal("convert_tz(`created_at`, '+00:00', '-05:00')"),
               'created_at',
             ],
           ],
@@ -31,20 +31,36 @@ export default class AppModel extends Model {
     )
   }
 
-  static async import(
-    createdAfter: string,
-    apiKey: string | undefined = process.env.PARDOT_API_KEY
-  ): Promise<void> {
+  static async import({
+    apiKey = '',
+    createdAfter,
+    dataMap,
+    queryParams = {},
+  }: {
+    apiKey?: string
+    createdAfter: string
+    dataMap?: (objectData: PardotObjectModel[]) => PardotObjectModel[]
+    queryParams?: Partial<RequestQueryParams>
+  }): Promise<void> {
     await importObjectData({
       apiKey,
       authenticate: async () => {
-        await this.import(await this.getLastCreatedAt(), await login())
+        await this.import({
+          apiKey: await login(),
+          createdAfter: await this.getLastCreatedAt(),
+          dataMap,
+          queryParams,
+        })
       },
       createdAfter: createdAfter,
       insert: async (objectData) => {
+        if (dataMap) {
+          objectData = dataMap(objectData)
+        }
         await this.bulkCreate(objectData)
       },
       pardotObject: this.modelName,
+      queryParams,
     })
   }
 }

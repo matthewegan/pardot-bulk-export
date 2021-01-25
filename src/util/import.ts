@@ -11,13 +11,13 @@ export function getLastRecordedCreatedAt(data: PardotObjectModel[]): string {
 }
 
 export async function importObjectData({
-  apiKey = process.env.PARDOT_API_KEY,
+  apiKey = '',
   authenticate,
   createdAfter,
   insert,
   lastRecordedIds = [],
   pardotObject,
-  queryParams = {},
+  queryParams,
 }: {
   apiKey?: string | undefined
   authenticate?: () => Promise<void>
@@ -25,7 +25,7 @@ export async function importObjectData({
   insert: (objectData: PardotObjectModel[]) => Promise<void>
   lastRecordedIds?: number[]
   pardotObject: PardotObject
-  queryParams?: Partial<RequestQueryParams>
+  queryParams: Partial<RequestQueryParams>
 }): Promise<void> {
   const { err, result } = await getObjectData(
     pardotObject,

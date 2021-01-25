@@ -2,164 +2,166 @@ import {
   AllowNull,
   Column,
   DataType,
-  Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript'
 
-@Table({ modelName: 'prospect', tableName: 'prospects', timestamps: false })
-export default class Prospect extends Model {
+import { AppModel } from '@/db/models'
+import { PardotObject } from '@/types'
+
+const modelName: PardotObject = 'prospect'
+
+@Table({ modelName, tableName: 'prospects', timestamps: false })
+export default class Prospect extends AppModel {
   @PrimaryKey
   @Column(DataType.INTEGER)
-  id!: number
+  public id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  campaign_id!: number
+  public campaign_id!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  campaign_name!: string | null
+  public campaign_name!: string | null
 
   @AllowNull
   @Column(DataType.INTEGER)
-  user_id!: number
+  public user_id!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  salutation!: string
+  public salutation!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  first_name!: string
+  public first_name!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  last_name!: string
+  public last_name!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  email!: string
+  public email!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  company!: string
+  public company!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  website!: string
+  public website!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  job_title!: string
+  public job_title!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  department!: string
+  public department!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  country!: string
+  public country!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  address_one!: string
+  public address_one!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  address_two!: string
+  public address_two!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  city!: string
+  public city!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  state!: string
+  public state!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  territory!: string
+  public territory!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  zip!: string
+  public zip!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  phone!: string
+  public phone!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  source!: string
+  public source!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  annual_revenue!: string
+  public annual_revenue!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  employees!: string
+  public employees!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  industry!: string
+  public industry!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  years_in_business!: string
+  public years_in_business!: string
 
   @AllowNull
   @Column(DataType.INTEGER)
-  score!: number
+  public score!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  grade!: string
+  public grade!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  crm_lead_fid!: string
+  public crm_lead_fid!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  crm_contact_fid!: string
+  public crm_contact_fid!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  crm_owner_fid!: string
+  public crm_owner_fid!: string
 
   @AllowNull
   @Column(DataType.DATE)
-  last_activity_at!: string
+  public last_activity_at!: string
 
   @AllowNull
   @Column(DataType.TINYINT)
-  is_do_not_email!: number
+  public is_do_not_email!: number
 
   @AllowNull
   @Column(DataType.TINYINT)
-  is_do_not_call!: number
+  public is_do_not_call!: number
 
   @AllowNull
   @Column(DataType.TINYINT)
-  opted_out!: number
+  public opted_out!: number
 
   @AllowNull
   @Column(DataType.TINYINT)
-  is_reviewed!: number
+  public is_reviewed!: number
 
   @AllowNull
   @Column(DataType.DATE)
-  created_at!: Date
-
-  @AllowNull
-  @Column(DataType.DATE)
-  updated_at!: Date
+  public updated_at!: Date
 
   @AllowNull
   @Column(DataType.INTEGER)
-  prospect_account_id!: number
+  public prospect_account_id!: number
 
-  campaign?: { id: number; name: string }
+  public campaign?: { id: number; name: string }
+
+  protected static modelName = modelName
 }

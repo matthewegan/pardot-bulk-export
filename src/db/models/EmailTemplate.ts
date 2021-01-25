@@ -15,103 +15,103 @@ import {
 export default class EmailTemplate extends Model {
   @PrimaryKey
   @Column(DataType.INTEGER)
-  id!: number
+  public id!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  name!: string
+  public name!: string
 
   @AllowNull
   @Column(DataType.TEXT)
-  htmlMessage!: string
+  public htmlMessage!: string
 
   @AllowNull
   @Column(DataType.TEXT)
-  textMessage!: string
+  public textMessage!: string
 
   @AllowNull
   @Column(DataType.TEXT)
-  trackedTextMessage!: string
+  public trackedTextMessage!: string
 
   @AllowNull
   @Column(DataType.TEXT)
-  trackedHtmlMessage!: string
+  public trackedHtmlMessage!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  fromName!: string
+  public fromName!: string
 
   @AllowNull
   @Column(DataType.TINYINT)
-  isOneToOneEmail!: number
+  public isOneToOneEmail!: number
 
   @AllowNull
   @Column(DataType.TINYINT)
-  isArchived!: number
+  public isArchived!: number
 
   @AllowNull
   @Column(DataType.TINYINT)
-  isAutoResponderEmail!: number
+  public isAutoResponderEmail!: number
 
   @AllowNull
   @Column(DataType.TINYINT)
-  isDripEmail!: number
+  public isDripEmail!: number
 
   @AllowNull
   @Column(DataType.TINYINT)
-  isListEmail!: number
+  public isListEmail!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  subject!: string
+  public subject!: string
 
   @PrimaryKey
   @Column(DataType.INTEGER)
-  emailType!: number
+  public emailType!: number
 
   @PrimaryKey
   @Column(DataType.INTEGER)
-  type!: number
+  public type!: number
 
   @AllowNull
   @Column(DataType.TINYINT)
-  sendFromAccountOwner!: number
+  public sendFromAccountOwner!: number
 
   @AllowNull
   @Column(DataType.TINYINT)
-  isTest!: number
+  public isTest!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  replyToAddress!: string
+  public replyToAddress!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  sendFromData!: string
+  public sendFromData!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  abVersion!: string
+  public abVersion!: string
 
   @AllowNull
   @Column(DataType.TINYINT)
-  error!: number
+  public error!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  errorCode?: string
+  public errorCode?: string
 
   @AllowNull
   @Column(DataType.STRING)
-  errorMessage?: string
+  public errorMessage?: string
 
-  sendOptions!: {
+  public created_at?: Date
+
+  public sendOptions!: {
     abVersion: string | null
     isTest: number | null
     replyToAddress: string
     sendFromAccountOwner: number | null
     sendFromData: string
   }
-
-  created_at?: Date
 }

@@ -13,7 +13,7 @@ export default express
         await VisitorActivity.truncate()
       }
 
-      await VisitorActivity.import(createdAfter as string)
+      await VisitorActivity.import({ createdAfter: createdAfter as string })
 
       return res
         .status(200)

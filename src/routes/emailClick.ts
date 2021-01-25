@@ -2,7 +2,6 @@ import express from 'express'
 
 import { createdAfterMiddleware } from '@/middleware'
 import { EmailClick } from '@/db/models'
-import { importObjectData } from '@/util/import'
 
 export default express
   .Router()
@@ -14,12 +13,8 @@ export default express
         await EmailClick.truncate()
       }
 
-      await importObjectData({
+      await EmailClick.import({
         createdAfter: createdAfter as string,
-        insert: async (objectData) => {
-          await EmailClick.bulkCreate(objectData)
-        },
-        pardotObject: 'emailClick',
         queryParams: { sort_by: '' },
       })
 

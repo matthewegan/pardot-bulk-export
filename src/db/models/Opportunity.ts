@@ -2,70 +2,68 @@ import {
   AllowNull,
   Column,
   DataType,
-  Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript'
 
-@Table({
-  modelName: 'opportunity',
-  tableName: 'opportunities',
-  timestamps: false,
-})
-export default class Opportunity extends Model {
+import { AppModel } from '@/db/models'
+import { PardotObject } from '@/types'
+
+const modelName: PardotObject = 'opportunity'
+
+@Table({ modelName, tableName: 'opportunities', timestamps: false })
+export default class Opportunity extends AppModel {
   @PrimaryKey
   @Column(DataType.INTEGER)
-  id!: number
+  public id!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  name!: string
+  public name!: string
 
   @AllowNull
   @Column(DataType.INTEGER)
-  value!: number
+  public value!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  probability!: number
+  public probability!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  type!: string
+  public type!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  stage!: string
+  public stage!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  status!: string
+  public status!: string
 
   @AllowNull
   @Column(DataType.DATE)
-  closed_at!: Date
+  public closed_at!: Date
 
   @AllowNull
   @Column(DataType.DATE)
-  created_at!: Date
-
-  @AllowNull
-  @Column(DataType.DATE)
-  updated_at!: Date
+  public updated_at!: Date
 
   @AllowNull
   @Column(DataType.INTEGER)
-  campaign_id?: number
+  public campaign_id?: number
 
   @AllowNull
   @Column(DataType.STRING)
-  campaign_name?: string | null
+  public campaign_name?: string | null
 
   @AllowNull
   @Column(DataType.INTEGER)
-  prospect_id?: number
+  public prospect_id?: number
 
-  campaign?: { id: number; name: string }
+  public campaign?: { id: number; name: string }
 
-  prospects?: { prospect: { id: number } }
+  public prospects?: { prospect: { id: number } }
+
+  protected static modelName = modelName
 }

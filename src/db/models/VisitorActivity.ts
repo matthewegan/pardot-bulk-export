@@ -11,83 +11,79 @@ import { PardotObject } from '@/types'
 
 const modelName: PardotObject = 'visitorActivity'
 
-@Table({
-  modelName,
-  tableName: 'visitor_activities',
-  timestamps: false,
-})
+@Table({ modelName, tableName: 'visitor_activities', timestamps: false })
 export default class VisitorActivity extends AppModel {
   @PrimaryKey
   @Column(DataType.INTEGER)
-  id!: number
+  public id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  prospect_id!: number
+  public prospect_id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  type!: number
+  public type!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  details!: number
+  public details!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  email_id!: number
+  public email_id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  email_template_id!: number
+  public email_template_id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  list_email_id!: number
+  public list_email_id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  form_id!: number
+  public form_id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  form_handler_id!: number
+  public form_handler_id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  site_search_query_id!: number
+  public site_search_query_id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  landing_page_id!: number
+  public landing_page_id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  paid_search_ad_id!: number
+  public paid_search_ad_id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  multivariate_test_variation_id!: number
+  public multivariate_test_variation_id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  visitor_page_view_id!: number
+  public visitor_page_view_id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  file_id!: number
+  public file_id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  custom_redirect_id!: number
+  public custom_redirect_id!: number
 
   @AllowNull
   @Column(DataType.INTEGER)
-  campaign_id!: number
+  public campaign_id!: number
 
   @AllowNull
   @Column(DataType.DATE)
-  updated_at!: Date
+  public updated_at!: Date
 
   protected static modelName = modelName
 }

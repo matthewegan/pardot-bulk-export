@@ -1,7 +1,6 @@
 import express from 'express'
 
 import { createdAfterMiddleware } from '@/middleware'
-import { importObjectData } from '@/util/import'
 import { List } from '@/db/models'
 
 export default express
@@ -14,16 +13,11 @@ export default express
         await List.truncate()
       }
 
-      await importObjectData({
-        createdAfter: createdAfter as string,
-        insert: async (objectData) => {
-          await List.bulkCreate(objectData)
-        },
-        pardotObject: 'list',
-      })
+      await List.import({ createdAfter: createdAfter as string })
 
       return res.status(200).json({ message: 'Lists imported', success: true })
     } catch (e) {
+      console.error(e)
       return res.status(500).json({ message: e.message, success: false })
     }
   })

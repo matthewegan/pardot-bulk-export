@@ -1,7 +1,6 @@
 import express from 'express'
 
 import { createdAfterMiddleware } from '@/middleware'
-import { importObjectData } from '@/util/import'
 import { Prospect } from '@/db/models'
 
 export default express
@@ -14,18 +13,14 @@ export default express
         await Prospect.truncate()
       }
 
-      await importObjectData({
+      await Prospect.import({
         createdAfter: createdAfter as string,
-        insert: async (objectData) => {
-          await Prospect.bulkCreate(
-            objectData.map((objectModel) => {
-              const prospect = objectModel as Prospect
-              prospect.campaign_name = prospect.campaign?.name || null
-              return prospect
-            })
-          )
-        },
-        pardotObject: 'prospect',
+        dataMap: (objectData) =>
+          objectData.map((objectModel) => {
+            const prospect = objectModel as Prospect
+            prospect.campaign_name = prospect.campaign?.name || null
+            return prospect
+          }),
       })
 
       return res.status(200).json({
@@ -33,6 +28,7 @@ export default express
         success: true,
       })
     } catch (e) {
+      console.error(e)
       return res.status(500).json({ message: e.message, success: false })
     }
   })

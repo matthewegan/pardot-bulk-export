@@ -15,31 +15,31 @@ import {
 export default class Email extends Model {
   @PrimaryKey
   @Column(DataType.INTEGER)
-  id!: number
+  public id!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  name!: string
+  public name!: string
 
   @AllowNull
   @Column(DataType.TINYINT)
-  isOneToOne!: number
+  public isOneToOne!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  subject!: string
+  public subject!: string
 
   @AllowNull
   @Column(DataType.TEXT)
-  messageText!: string
+  public messageText!: string
 
   @AllowNull
   @Column(DataType.TEXT)
-  messageHtml!: string
+  public messageHtml!: string
 
   @AllowNull
   @Column(DataType.DATE)
-  created_at!: Date
+  public created_at!: Date
 
-  message?: { html: string; text: string }
+  public message?: { html: string; text: string }
 }

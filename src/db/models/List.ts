@@ -2,46 +2,48 @@ import {
   AllowNull,
   Column,
   DataType,
-  Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript'
 
-@Table({ modelName: 'list', tableName: 'lists', timestamps: false })
-export default class List extends Model {
+import { AppModel } from '@/db/models'
+import { PardotObject } from '@/types'
+
+const modelName: PardotObject = 'list'
+
+@Table({ modelName, tableName: 'lists', timestamps: false })
+export default class List extends AppModel {
   @PrimaryKey
   @Column(DataType.INTEGER)
-  id!: number
+  public id!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  name!: string
+  public name!: string
 
   @AllowNull
   @Column(DataType.TINYINT)
-  is_public!: number
+  public is_public!: number
 
   @AllowNull
   @Column(DataType.TINYINT)
-  is_dynamic!: number
+  public is_dynamic!: number
 
   @AllowNull
   @Column(DataType.STRING)
-  title!: string
+  public title!: string
 
   @AllowNull
   @Column(DataType.STRING)
-  description!: string
+  public description!: string
 
   @AllowNull
   @Column(DataType.TINYINT)
-  is_crm_visible!: number
+  public is_crm_visible!: number
 
   @AllowNull
   @Column(DataType.DATE)
-  created_at!: Date
+  public updated_at!: Date
 
-  @AllowNull
-  @Column(DataType.DATE)
-  updated_at!: Date
+  protected static modelName = modelName
 }

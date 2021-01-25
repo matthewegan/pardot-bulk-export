@@ -2,35 +2,33 @@ import {
   AllowNull,
   Column,
   DataType,
-  Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript'
 
-@Table({
-  modelName: 'listMembership',
-  tableName: 'list_memberships',
-  timestamps: false,
-})
-export default class ListMembership extends Model {
+import { AppModel } from '@/db/models'
+import { PardotObject } from '@/types'
+
+const modelName: PardotObject = 'listMembership'
+
+@Table({ modelName, tableName: 'list_memberships', timestamps: false })
+export default class ListMembership extends AppModel {
   @PrimaryKey
   @Column(DataType.INTEGER)
-  id!: number
+  public id!: number
 
   @Column(DataType.INTEGER)
-  list_id!: number
+  public list_id!: number
 
   @Column(DataType.INTEGER)
-  prospect_id!: number
+  public prospect_id!: number
 
   @Column(DataType.TINYINT)
-  opted_out!: number
+  public opted_out!: number
 
   @AllowNull
   @Column(DataType.DATE)
-  created_at!: Date
+  public updated_at!: Date
 
-  @AllowNull
-  @Column(DataType.DATE)
-  updated_at!: Date
+  protected static modelName = modelName
 }
