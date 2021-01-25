@@ -18,7 +18,7 @@ export default class AppModel extends Model {
         await this.findOne({
           attributes: [
             [
-              literal("convert_tz(`created_at`, '+00:00', '-05:00')"),
+              literal("convert_tz(`created_at`, '+00:00', '-04:00')"),
               'created_at',
             ],
           ],
